@@ -1,0 +1,4 @@
+{"level":"info","message":{"_id":"61efe5fa2cae4b25fb5063bc","age":24,"createdAt":"2022-01-25T11:58:50.817Z","name":"yaren","updatedAt":"2022-01-25T11:58:50.817Z"},"service":"project-service"}
+{"level":"info","message":{"_id":"61fbfa2ab548cc0b73d67d44","age":24,"createdAt":"2022-02-03T15:52:10.614Z","name":"yarenn","updatedAt":"2022-02-03T15:52:10.614Z","user_id":"61eff982a0407c6014e2d028"},"service":"project-service"}
+{"level":"info","message":{"_id":"61fc111c56860685a00f6adf","age":24,"createdAt":"2022-02-03T17:30:04.777Z","name":"ahmett","updatedAt":"2022-02-03T17:30:04.777Z","user_id":"61eff982a0407c6014e2d028"},"service":"project-service"}
+{"level":"info","message":{"_id":"61fd1ab538f484dc949a156b","age":24,"createdAt":"2022-02-04T12:23:17.857Z","name":"ahmett","updatedAt":"2022-02-04T12:23:17.857Z","user_id":"61eff982a0407c6014e2d028"},"service":"project-service"}

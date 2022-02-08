@@ -1,0 +1,30 @@
+GET http://localhost:3003/projects
+###
+POST http://localhost:3003/projects
+Content-Type: application/json
+
+{
+    "name":"yaren",
+    "age": 24
+}
+
+###
+POST http://localhost:3003/users
+Content-Type: application/json
+
+{
+    "full_name":"deneme 123",
+    "password":"123123123",
+    "email":"deneme@test.com"
+    
+}
+
+###
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+    "email":"kupcuk@test.com",
+    "password":"123123123"
+    
+}
