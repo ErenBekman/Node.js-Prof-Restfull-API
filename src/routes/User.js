@@ -5,6 +5,7 @@ const schemas = require('../validations/Users');
 // const { create, index , login, projectList, resetPassword, update, deleteUser, changePassword, updateProfileImage} = require('../controllers/Users')
 const UserController = require('../controllers/User');
 const authenticateToken = require('../middleware/authenticate');
+const idChecker = require('../middleware/idChecker');
 
 // router.get('/', index)
 router.route('/').get(authenticateToken, UserController.index);
@@ -35,7 +36,9 @@ router
       validate(schemas.changePasswordValidation),
       UserController.changePassword
    );
-router.route('/:id').delete(authenticateToken, UserController.deleteUser);
+router
+   .route('/:id')
+   .delete(idChecker(), authenticateToken, UserController.deleteUser);
 router
    .route('/update-profile-image')
    .post(authenticateToken, UserController.updateProfileImage);

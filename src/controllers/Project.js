@@ -1,6 +1,7 @@
 // const { insert , list, modify, remove } = require('../services/Projects_')
 const httpStatus = require('http-status');
 const ProjectService = require('../services/ProjectService');
+const ApiError = require('../errors/ApiError');
 
 class Project {
    index(req, res) {
@@ -24,25 +25,30 @@ class Project {
          });
    }
 
-   update(req, res) {
+   update(req, res, next) {
       if (!req.params.id) {
          res.status(httpStatus.BAD_REQUEST).send({
-            message: 'user id not found',
+            message: 'id not found'
          });
       }
       ProjectService.update(req.params.id, req.body)
-         .then((response) => {
-            res.status(httpStatus.OK).send(response);
+         .then((updatedProject) => {
+            if (!updatedProject)
+               return next(new ApiError('no such user found!', 404));
+            res.status(httpStatus.OK).send(updatedProject);
          })
-         .catch((e) => {
-            res.status(httpStatus.INTERNAL_SERVER_ERROR).send(e);
-         });
+         .catch(
+            (e) => next(new ApiError(e.message))
+            // res.status(httpStatus.INTERNAL_SERVER_ERROR).send({
+            //    error: 'An error occurred while saving'
+            // });
+         );
    }
 
    deleteProject(req, res) {
       if (!req.params.id) {
          res.status(httpStatus.BAD_REQUEST).send({
-            message: 'user id not found',
+            message: 'user id not found'
          });
       }
       ProjectService.delete(req.params.id)
@@ -53,7 +59,7 @@ class Project {
                   .send({ message: 'user  id not found' });
             }
             res.status(httpStatus.OK).send({
-               message: `user - id#${response._id} deleted`,
+               message: `user - id#${response._id} deleted`
             });
          })
          .catch((e) => {

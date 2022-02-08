@@ -4,8 +4,9 @@ const helmet = require('helmet');
 const config = require('./config');
 const loaders = require('./loaders');
 const events = require('./scripts/events');
-const { ProjectRoutes, UserRoutes } = require('./routes');
 const path = require('path');
+const errorHandler = require('./middleware/errorHandler');
+const { ProjectRoutes, UserRoutes } = require('./routes');
 
 config();
 loaders();
@@ -21,4 +22,15 @@ app.listen(process.env.APP_PORT, () => {
    console.log('server have started..');
    app.use('/projects', ProjectRoutes);
    app.use('/users', UserRoutes);
+
+   app.use((req, res, next) => {
+      const error = new Error(
+         'The page you were looking for could not be found..'
+      );
+      error.status = 404;
+      next(error);
+   });
+
+   // !error handler
+   app.use(errorHandler);
 });
