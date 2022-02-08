@@ -1,2 +1,2 @@
-module.exports.ProjectRoutes = require('./Projects')
-module.exports.UserRoutes = require('./Users')
+module.exports.ProjectRoutes = require('./Project');
+module.exports.UserRoutes = require('./User');
